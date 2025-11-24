@@ -16,7 +16,7 @@ pipeline{
                  }
              }
         }
-        stage ('k8s') {
+        stage ('k8s-deploy') {
              steps{
                  withKubeConfig(caCertificate: '', clusterName: 'my-cluster', contextName: '', credentialsId: 'k8-cred', namespace: 'webapps', restrictKubeConfigAccess: false, serverUrl: 'https://F233AB1DE84E5B6B8593CD15900C14FB.gr7.ap-south-1.eks.amazonaws.com') {
                  sh "kubectl apply -f manifest/deployment.yaml -n webapps"
