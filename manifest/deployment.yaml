@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
        - name: project-2
-         image: adrian0186/testpro:latest
+         image: adrian0186/trend-project:latest
          imagePullPolicy: Always
          ports:
           - containerPort: 80
