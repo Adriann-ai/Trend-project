@@ -1,3 +1,3 @@
-FROM httpd:latest
-COPY dist/ /usr/local/apache2/htdocs/
+FROM nginx:latest
+COPY dist/ /usr/share/nginx/html/
 EXPOSE 80
