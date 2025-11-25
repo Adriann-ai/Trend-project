@@ -10,15 +10,15 @@ pipeline{
              steps{
                  script{
                      withDockerRegistry(credentialsId: 'dockerhub-cred') {
-                         sh 'docker build -t adrian0186/trend-project:latest .'
-                         sh 'docker push adrian0186/trend-project:latest'
+                         sh 'docker build -t adreann/trend:latest .'
+                         sh 'docker push adreann/trend:latest'
                      }
                  }
              }
         }
         stage ('k8s-deploy') {
              steps{
-                 withKubeConfig(caCertificate: '', clusterName: 'my-cluster', contextName: '', credentialsId: 'k8-cred', namespace: 'webapps', restrictKubeConfigAccess: false, serverUrl: 'https://F233AB1DE84E5B6B8593CD15900C14FB.gr7.ap-south-1.eks.amazonaws.com') {
+                 withKubeConfig(caCertificate: '', clusterName: 'trend-cluster', contextName: '', credentialsId: 'k8-cred', namespace: 'webapps', restrictKubeConfigAccess: false, serverUrl: 'https://5FDD14B58FB196B527EE2133BA254924.yl4.ap-south-1.eks.amazonaws.com') {
                  sh "kubectl apply -f manifest/deployment.yaml -n webapps"
                  }
              }
