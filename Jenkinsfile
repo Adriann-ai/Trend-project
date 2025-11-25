@@ -18,8 +18,9 @@ pipeline{
         }
         stage ('k8s-deploy') {
              steps{
-                 withKubeConfig(caCertificate: '', clusterName: 'trend-cluster', contextName: '', credentialsId: 'k8-cred', namespace: 'webapps', restrictKubeConfigAccess: false, serverUrl: 'https://5FDD14B58FB196B527EE2133BA254924.yl4.ap-south-1.eks.amazonaws.com') {
+                 withKubeConfig(caCertificate: '', clusterName: 'trend-cluster', contextName: '', credentialsId: 'k8s-cred', namespace: 'webapps', restrictKubeConfigAccess: false, serverUrl: 'https://5FDD14B58FB196B527EE2133BA254924.yl4.ap-south-1.eks.amazonaws.com') {
                  sh "kubectl apply -f manifest/deployment.yaml -n webapps"
+                 sh "kubectl apply -f manifest/service.yaml -n webapps"
                  }
              }
         }    
