@@ -6,7 +6,7 @@ pipeline{
                 git branch: 'main', url: 'https://github.com/Adriann-ai/Trend-project.git'
             }
         }
-        stage ('docker build and push  hub') {
+        stage ('docker build and push to hub') {
              steps{
                  script{
                      withDockerRegistry(credentialsId: 'dockerhub-cred') {
